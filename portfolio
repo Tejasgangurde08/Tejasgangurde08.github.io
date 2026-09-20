@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tejas Gangurde | Full Stack Developer &amp; Data Analyst Portfolio</title>
+<meta name="description" content="Tejas Gangurde, BSc Computer Science student from Malegaon learning full stack development, data analysis and cybersecurity. See my projects and get in touch." />
+<!-- Google Search Console: paste your verification tag right below this line -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💜</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0a0318;
+    --text: #f6f1ff;
+    --muted: #b9a8dc;
+    --violet: #a855f7;
+    --purple: #7c3aed;
+    --line: rgba(167, 139, 250, 0.22);
+    --card: linear-gradient(135deg, rgba(109, 40, 217, 0.45), rgba(28, 10, 58, 0.78));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  [hidden] { display: none !important; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { background: var(--bg); color: var(--text); font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.65; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: min(980px, 100% - 40px); margin-inline: auto; position: relative; z-index: 1; }
+  section { position: relative; overflow: hidden; padding: 76px 0; }
+  .glow { position: absolute; z-index: 0; pointer-events: none; border-radius: 50%; background: radial-gradient(circle, rgba(124, 58, 237, 0.4), transparent 68%); filter: blur(28px); }
+
+  .head { margin-bottom: 36px; }
+  .head h2 { font-size: clamp(1.6rem, 4.2vw, 2.2rem); font-weight: 600; line-height: 1.2; }
+  .head h2::after { content: ""; display: block; width: 46px; height: 3px; border-radius: 3px; background: var(--violet); margin-top: 12px; }
+  .head p { color: var(--muted); margin-top: 14px; max-width: 58ch; }
+  h3 { font-weight: 600; line-height: 1.3; }
+  .sub { font-size: 1.15rem; font-weight: 500; margin: 48px 0 20px; }
+
+  /* nav */
+  header { position: fixed; inset: 0 0 auto 0; z-index: 50; background: rgba(10, 3, 24, 0.78); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav { width: min(980px, 100% - 40px); margin-inline: auto; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-weight: 700; }
+  .logo span { color: var(--violet); }
+  nav ul { display: flex; gap: 22px; list-style: none; }
+  nav a { color: var(--muted); font-size: 0.88rem; transition: color .2s; }
+  nav a:hover { color: var(--text); }
+  .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--text); width: 40px; height: 40px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; }
+  @media (max-width: 760px) {
+    .menu-btn { display: block; }
+    nav ul { position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; gap: 0; background: #12062a; border-bottom: 1px solid var(--line); display: none; }
+    nav ul.open { display: flex; }
+    nav li a { display: block; padding: 15px 20px; border-top: 1px solid var(--line); }
+  }
+
+  /* buttons + chips */
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 11px 24px; border-radius: 10px; font-weight: 500; font-size: 0.92rem; border: 1px solid var(--line); transition: transform .15s, background .2s, border-color .2s; }
+  .btn:hover { transform: translateY(-2px); border-color: var(--violet); }
+  .btn.primary { background: var(--purple); border-color: var(--purple); }
+  .btn.primary:hover { background: var(--violet); border-color: var(--violet); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 0.78rem; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); background: rgba(10, 3, 24, 0.5); }
+  .badge { display: inline-block; font-size: 0.72rem; padding: 3px 12px; border-radius: 999px; color: #e9d5ff; background: rgba(168, 85, 247, 0.22); border: 1px solid rgba(168, 85, 247, 0.5); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .gem { flex: none; width: 52px; height: 52px; border-radius: 50%; background: radial-gradient(circle at 32% 30%, #fff 0, var(--c) 42%, transparent 74%); box-shadow: 0 0 26px var(--c); }
+
+  /* HOME */
+  #home { padding-top: 120px; }
+  .top { display: flex; align-items: center; gap: 22px; margin-bottom: 52px; flex-wrap: wrap; }
+  .avatar-box { position: relative; flex: none; }
+  .avatar-box::before { content: ""; position: absolute; inset: -34px; z-index: -1; border-radius: 50%; background: radial-gradient(circle, rgba(168, 85, 247, 0.5), transparent 70%); filter: blur(18px); }
+  .avatar { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; border: 2px solid var(--line); background: #14062b; }
+  .avatar-fallback { display: none; place-items: center; font-size: 3rem; font-weight: 700; color: var(--violet); }
+  .hello { font-size: 0.88rem; color: var(--muted); }
+  .hello b { color: var(--violet); font-weight: 500; }
+  .who { font-size: 0.8rem; color: var(--muted); margin-top: 6px; }
+  .tagline { font-size: clamp(1.7rem, 5vw, 2.6rem); font-weight: 500; line-height: 1.2; }
+  .ring { position: relative; display: inline-block; padding: 0 10px; color: var(--violet); }
+  .ring::after { content: ""; position: absolute; inset: -4px -2px; border: 1.5px solid var(--violet); border-radius: 50%; transform: rotate(-3deg); }
+  .because { font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
+  .typing { font-size: clamp(1.3rem, 3.8vw, 1.8rem); font-weight: 500; min-height: 1.5em; }
+  .cursor { display: inline-block; width: 2px; height: 1em; background: var(--text); margin-left: 3px; vertical-align: -0.12em; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .current { font-size: 0.85rem; color: var(--muted); margin: 4px 0 20px; }
+  .current b { color: #7dc4ff; font-weight: 500; }
+  .bio { color: var(--muted); font-size: 0.95rem; max-width: 60ch; }
+  .socials { display: flex; gap: 12px; margin-top: 24px; }
+  .socials a { display: inline-flex; padding: 9px; border: 1px solid var(--line); border-radius: 10px; transition: border-color .2s, color .2s; }
+  .socials a:hover { border-color: var(--violet); color: var(--violet); }
+  .socials svg { width: 20px; height: 20px; fill: currentColor; }
+
+  /* WHAT I DO */
+  .do { display: grid; gap: 16px; }
+  @media (min-width: 860px) { .do { grid-template-columns: repeat(3, 1fr); } }
+  .do .card { display: flex; flex-direction: column; gap: 14px; }
+  .do .row1 { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .do h3 { font-size: 1.15rem; }
+  .do p { color: var(--muted); font-size: 0.9rem; }
+  .do ul { list-style: none; display: grid; gap: 8px; font-size: 0.85rem; color: #ddd0f5; }
+  .do li { padding-left: 18px; position: relative; }
+  .do li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 8px; height: 2px; background: var(--violet); }
+
+  /* ABOUT */
+  .about { display: grid; gap: 28px; }
+  @media (min-width: 860px) { .about { grid-template-columns: 340px 1fr; align-items: start; } }
+  .profile { text-align: center; }
+  .profile .avatar { width: 120px; height: 120px; margin: 0 auto 14px; }
+  .profile img.avatar { display: block; }
+  .profile h3 { font-size: 1.25rem; }
+  .profile .chips { justify-content: center; margin: 12px 0 18px; }
+  .facts { list-style: none; text-align: left; }
+  .facts li { padding: 11px 0; border-top: 1px solid var(--line); font-size: 0.86rem; }
+  .facts small { display: block; color: var(--muted); font-size: 0.74rem; }
+  .story h3 { font-size: 1.15rem; margin-bottom: 14px; }
+  .story p { color: var(--muted); margin-bottom: 14px; max-width: 64ch; }
+  .story b { color: var(--text); font-weight: 600; }
+  .three { display: grid; gap: 14px; }
+  @media (min-width: 760px) { .three { grid-template-columns: repeat(3, 1fr); } }
+  .three .card { padding: 20px; }
+  .three h3 { font-size: 1rem; margin: 14px 0 6px; }
+  .three p { color: var(--muted); font-size: 0.85rem; }
+  .two { display: grid; gap: 14px; }
+  @media (min-width: 700px) { .two { grid-template-columns: 1fr 1fr; } }
+  .two .card { display: flex; gap: 16px; align-items: center; padding: 20px; }
+  .two h3 { font-size: 1rem; }
+  .two p { color: var(--muted); font-size: 0.84rem; margin-top: 3px; }
+
+  /* ARSENAL */
+  .arsenal { display: grid; gap: 14px; }
+  @media (min-width: 700px) { .arsenal { grid-template-columns: 1fr 1fr; } }
+  .arsenal h3 { font-size: 1rem; margin-bottom: 14px; }
+  .arsenal .chip { font-size: 0.85rem; padding: 6px 14px; color: var(--text); }
+
+  /* TOOLS */
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 8px; margin-bottom: 20px; scrollbar-width: thin; }
+  .tab { flex: none; background: rgba(10, 3, 24, 0.5); color: var(--muted); border: 1px solid var(--line); border-radius: 10px; padding: 9px 16px; font: inherit; font-size: 0.85rem; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+  .tab:hover { color: var(--text); border-color: var(--violet); }
+  .tab[aria-selected="true"] { color: var(--text); border-color: var(--violet); background: rgba(124, 58, 237, 0.3); }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+  .tile { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 18px 10px; text-align: center; border: 1px solid var(--line); border-radius: 12px; background: var(--card); font-size: 0.88rem; }
+  .tile .mono { width: 42px; height: 42px; border-radius: 10px; display: grid; place-items: center; font-weight: 700; font-size: 0.95rem; color: #fff; background: linear-gradient(135deg, var(--purple), #c084fc); }
+  .plat .mono { font-size: 1.3rem; background: rgba(124, 58, 237, 0.25); border: 1px solid var(--line); }
+
+  /* PROJECTS */
+  .proj { display: grid; gap: 16px; margin-bottom: 72px; align-items: center; }
+  .proj:last-child { margin-bottom: 0; }
+  @media (min-width: 760px) {
+    .proj { grid-template-columns: 1.1fr 1fr; gap: 0; }
+    .proj.flip .shot { order: 2; }
+    .proj .info { margin-left: -64px; z-index: 2; }
+    .proj.flip .info { margin-left: 0; margin-right: -64px; text-align: right; }
+    .proj.flip .chips, .proj.flip .icons { justify-content: flex-end; }
+  }
+  .shot { aspect-ratio: 16 / 10; background: #f4f1fa; border-radius: 6px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45); display: flex; flex-direction: column; color: #2a1a44; }
+  .shot .bar { display: flex; gap: 5px; padding: 8px 10px; background: #e5def2; }
+  .shot .bar i { width: 7px; height: 7px; border-radius: 50%; background: #b9a8dc; }
+  .shot .body { flex: 1; display: grid; place-items: center; text-align: center; font-weight: 600; font-size: clamp(0.95rem, 2.4vw, 1.25rem); padding: 14px; }
+  .shot .body span { display: block; font-size: 2rem; margin-bottom: 6px; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; }
+  .label { color: var(--violet); font-size: 0.75rem; }
+  .info h3 { font-size: 1.3rem; font-weight: 500; margin-bottom: 10px; }
+  .info .desc { background: rgba(88, 40, 160, 0.4); backdrop-filter: blur(8px); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; font-size: 0.86rem; color: #ddd0f5; margin-bottom: 12px; text-align: left; }
+  .icons { display: flex; gap: 14px; margin-top: 14px; }
+  .icons a { display: inline-flex; opacity: 0.85; }
+  .icons a:hover { opacity: 1; color: var(--violet); }
+  .icons svg { width: 22px; height: 22px; fill: currentColor; }
+
+  /* CONTACT */
+  .contact { display: grid; gap: 28px; }
+  @media (min-width: 860px) { .contact { grid-template-columns: 1fr 1.1fr; align-items: start; } }
+  .contact h3 { font-size: 1.3rem; margin-bottom: 12px; }
+  .contact p { color: var(--muted); max-width: 46ch; }
+  .list { display: grid; gap: 10px; }
+  .row { display: flex; flex-direction: column; padding: 14px 18px; border: 1px solid var(--line); border-radius: 12px; background: rgba(18, 6, 42, 0.7); transition: border-color .2s; word-break: break-word; }
+  a.row:hover { border-color: var(--violet); }
+  .row small { color: var(--muted); font-size: 0.74rem; }
+  .wa { background: rgba(22, 101, 52, 0.25); border-color: rgba(34, 197, 94, 0.5); color: #86efac; }
+  .wa:hover { border-color: #22c55e; }
+  footer { padding: 28px 0 36px; text-align: center; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .cursor { animation: none; }
+    .btn, .tab { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#home" class="logo">Tejas<span>.</span></a>
+    <nav aria-label="Main">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#do">What I do</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#arsenal">Skills</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HOME -->
+  <section id="home">
+    <div class="glow" style="width:520px;height:520px;top:-100px;left:-200px;"></div>
+    <div class="glow" style="width:420px;height:420px;bottom:-140px;right:-180px;"></div>
+    <div class="wrap">
+      <div class="top">
+        <div class="avatar-box">
+          <!-- Put your photo next to index.html and name it me.jpg -->
+          <img class="avatar" src="me.jpg" alt="Tejas Gangurde" onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='grid';" />
+          <div class="avatar avatar-fallback" id="avatarFallback" role="img" aria-label="Tejas Gangurde">T</div>
+        </div>
+        <div>
+          <p class="hello">Hello! I am <b>Tejas Gangurde</b></p>
+          <p class="who">A student developer who</p>
+          <p class="tagline">Learns by <span class="ring">building</span> real things</p>
+          <p class="because">Every project teaches me something a tutorial can't.</p>
+        </div>
+      </div>
+
+      <p class="typing"><span id="typed"></span><span class="cursor" aria-hidden="true"></span></p>
+      <p class="current">Currently, I'm a BSc Computer Science student at <b>K.K. Wagh</b>, from Malegaon.</p>
+      <p class="bio">I'm a beginner in full stack development and data analysis, and I'm also exploring cybersecurity. I'm learning ahead so I can understand things better and build more.</p>
+      <div class="btns">
+        <a href="#projects" class="btn primary">View projects</a>
+        <a href="#contact" class="btn">Contact me</a>
+        <a data-key="resume" class="btn" target="_blank" rel="noopener" hidden>Download resume</a>
+      </div>
+      <div class="socials">
+        <a data-key="github" target="_blank" rel="noopener" aria-label="GitHub" hidden><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+        <a data-key="linkedin" target="_blank" rel="noopener" aria-label="LinkedIn" hidden><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.5H3V9.75Zm6.5 0h3.83v1.57h.05c.53-1 1.84-2.07 3.78-2.07 4.04 0 4.79 2.66 4.79 6.12v5.88h-4v-5.21c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75v5.3h-4V9.75Z"/></svg></a>
+        <a data-key="email" aria-label="Email" hidden><svg viewBox="0 0 24 24"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4.6 7H4v.6l8 5.6 8-5.6V7h-.6L12 12.2Z"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section id="do">
+    <div class="glow" style="width:480px;height:480px;top:0;right:-220px;"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2>What I do</h2>
+        <p>I'm at the beginner stage in all of these, and I practise a little every day.</p>
+      </div>
+      <div class="do">
+        <div class="card">
+          <div class="row1"><div class="gem" style="--c:#f472b6"></div><span class="badge">Beginner</span></div>
+          <h3>Full Stack Development</h3>
+          <p>Learning to build a whole web app, from the page you see to the server and database behind it.</p>
+          <ul><li>Building pages with HTML, CSS and JavaScript</li><li>Writing back-end logic in Python and Java</li><li>Connecting apps to a database</li></ul>
+        </div>
+        <div class="card">
+          <div class="row1"><div class="gem" style="--c:#60a5fa"></div><span class="badge">Beginner</span></div>
+          <h3>Data Analysis</h3>
+          <p>Learning to turn raw data into answers people can use to make decisions.</p>
+          <ul><li>Cleaning and organising data</li><li>Finding patterns with Python and SQL</li><li>Showing results in simple charts</li></ul>
+        </div>
+        <div class="card">
+          <div class="row1"><div class="gem" style="--c:#a855f7"></div><span class="badge">Exploring</span></div>
+          <h3>Cybersecurity Basics</h3>
+          <p>Learning how systems get attacked so I can build and defend them better.</p>
+          <ul><li>Web security and the OWASP list</li><li>Practice labs on TryHackMe and Hack The Box</li><li>Phishing and digital forensics projects</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="glow" style="width:460px;height:460px;top:60px;left:-220px;"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2>Who am I?</h2>
+        <p>A Full Stack Developer and Data Analyst in the making, from Malegaon.</p>
+      </div>
+
+      <div class="about">
+        <div class="card profile">
+          <img class="avatar" src="me.jpg" alt="Tejas Gangurde" onerror="this.style.display='none'; document.getElementById('avatarFallback2').style.display='grid';" />
+          <div class="avatar avatar-fallback" id="avatarFallback2" style="margin:0 auto 14px;" role="img" aria-label="Tejas Gangurde">T</div>
+          <h3>Tejas Gangurde</h3>
+          <div class="chips"><span class="chip">Full Stack Dev</span><span class="chip">Data Analyst</span><span class="chip">Learner</span></div>
+          <ul class="facts">
+            <li data-row="location"><small>Location</small><span class="val"></span></li>
+            <li data-row="college"><small>College</small><span class="val"></span></li>
+            <li data-row="course"><small>Course</small><span class="val"></span></li>
+            <li data-row="email"><small>Email</small><span class="val"></span></li>
+            <li data-row="phone"><small>Phone</small><span class="val"></span></li>
+          </ul>
+        </div>
+        <div class="story">
+          <h3>My story</h3>
+          <p>I'm <b>Tejas Gangurde</b>, a <b>Full Stack Developer</b> and <b>Data Analyst</b> from Malegaon, Maharashtra. I'm in my <b>2nd year of BSc Computer Science</b> at K.K. Wagh.</p>
+          <p>I'm still a beginner, and I like that. I keep learning ahead of my syllabus so I understand how things work, not just how to pass an exam.</p>
+          <p>What started as curiosity about code has grown into three areas I enjoy: building web apps, working with data, and understanding how systems are attacked and protected. My projects mix all three.</p>
+        </div>
+      </div>
+
+      <h3 class="sub">Professional experience</h3>
+      <p style="color:var(--muted);margin:-8px 0 18px;max-width:58ch;">I'm early in my journey, so my experience is in what I use, what I learn and what I imagine.</p>
+      <div class="three">
+        <div class="card"><div class="gem" style="--c:#f472b6"></div><h3>Tools</h3><p>I practise with the tools listed below, such as Kali Linux, Wireshark, Burp Suite and Python, in labs and small projects.</p></div>
+        <div class="card"><div class="gem" style="--c:#60a5fa"></div><h3>Learning</h3><p>Studying BSc Computer Science, plus self-study on TryHackMe and Hack The Box to go deeper than class.</p></div>
+        <div class="card"><div class="gem" style="--c:#a855f7"></div><h3>Imagination</h3><p>I start with a real problem, like unsafe roads or phishing links, and imagine the software that could fix it.</p></div>
+      </div>
+
+      <h3 class="sub">What drives me</h3>
+      <div class="two">
+        <div class="card"><div class="gem" style="--c:#f472b6"></div><div><h3>Full stack development</h3><p>Building something complete that people can open and use.</p></div></div>
+        <div class="card"><div class="gem" style="--c:#fbbf24"></div><div><h3>Problem solving</h3><p>Every bug is a puzzle, and I enjoy solving it.</p></div></div>
+        <div class="card"><div class="gem" style="--c:#60a5fa"></div><div><h3>Learning new tech</h3><p>Always trying the next tool, language or idea.</p></div></div>
+        <div class="card"><div class="gem" style="--c:#a855f7"></div><div><h3>Cybersecurity</h3><p>Understanding how systems fail so I can make them stronger.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARSENAL -->
+  <section id="arsenal">
+    <div class="glow" style="width:480px;height:480px;top:-60px;right:-220px;"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2>My arsenal</h2>
+        <p>The core skills I'm building.</p>
+      </div>
+      <div class="arsenal">
+        <div class="card"><h3>Web</h3><div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Database integration</span></div></div>
+        <div class="card"><h3>Programming</h3><div class="chips"><span class="chip">Python</span><span class="chip">Java</span><span class="chip">C</span><span class="chip">C++</span></div></div>
+        <div class="card"><h3>Security</h3><div class="chips"><span class="chip">OWASP</span><span class="chip">Cyber security</span><span class="chip">Networking</span></div></div>
+        <div class="card"><h3>Human and mobile</h3><div class="chips"><span class="chip">Mobile</span><span class="chip">Social engineering</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS + PLATFORMS -->
+  <section id="tools">
+    <div class="glow" style="width:460px;height:460px;top:20px;left:-220px;"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2>My tools</h2>
+        <p>Pick a category to see what I use.</p>
+      </div>
+      <div class="tabs" role="tablist" id="tabs" aria-label="Tool categories"></div>
+      <div class="tiles" id="toolTiles" role="tabpanel"></div>
+
+      <div class="head" style="margin-top:72px;">
+        <h2>Platforms and OS</h2>
+        <p>Where I practise and run my work.</p>
+      </div>
+      <div class="tiles plat"></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="glow" style="width:460px;height:460px;top:40px;left:-220px;"></div>
+    <div class="glow" style="width:460px;height:460px;bottom:-60px;right:-220px;"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2>Projects</h2>
+        <p>Three projects where I put my learning to work.</p>
+      </div>
+
+      <article class="proj">
+        <div class="shot" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <!-- For a real screenshot, replace the div below with: <img src="road.png" alt="Smart Road project screenshot" /> -->
+          <div class="body"><div><span>🚦</span>Smart Road &amp; Transport Problem Solver</div></div>
+        </div>
+        <div class="info">
+          <p class="label">Featured project</p>
+          <h3>Smart Road &amp; Transport Problem Solver</h3>
+          <p class="desc">A project that looks at everyday road and transport problems, like traffic, delays and unsafe routes, and works out smarter ways to solve them.</p>
+          <div class="chips"><span class="chip">Problem solving</span><span class="chip">Web</span></div>
+          <div class="icons">
+            <a data-key="roadCode" target="_blank" rel="noopener" aria-label="Source code" hidden><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+            <a data-key="roadLive" target="_blank" rel="noopener" aria-label="Live project" hidden><svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H6v11h11v-5h2v7H4V5h1Z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj flip">
+        <div class="shot" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="body"><div><span>🛡️</span>Anti-Phishing Browser Extension</div></div>
+        </div>
+        <div class="info">
+          <p class="label">Featured project</p>
+          <h3>Anti-Phishing Browser Extension</h3>
+          <p class="desc">A browser extension built to spot suspicious phishing links and warn people before they click or enter their details.</p>
+          <div class="chips"><span class="chip">Browser extension</span><span class="chip">Cybersecurity</span></div>
+          <div class="icons">
+            <a data-key="phishCode" target="_blank" rel="noopener" aria-label="Source code" hidden><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+            <a data-key="phishLive" target="_blank" rel="noopener" aria-label="Live project" hidden><svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H6v11h11v-5h2v7H4V5h1Z"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="shot" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i></div>
+          <div class="body"><div><span>🔍</span>Digital Forensics Case Investigation</div></div>
+        </div>
+        <div class="info">
+          <p class="label">Featured project</p>
+          <h3>Digital Forensics Case Investigation</h3>
+          <p class="desc">A case investigation that uses digital forensics steps to collect evidence, analyse it and explain what happened.</p>
+          <div class="chips"><span class="chip">Digital forensics</span><span class="chip">Cybersecurity</span></div>
+          <div class="icons">
+            <a data-key="forensicsCode" target="_blank" rel="noopener" aria-label="Source code" hidden><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg></a>
+            <a data-key="forensicsLive" target="_blank" rel="noopener" aria-label="Live project" hidden><svg viewBox="0 0 24 24"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H6v11h11v-5h2v7H4V5h1Z"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="glow" style="width:480px;height:480px;bottom:-240px;left:-160px;"></div>
+    <div class="wrap">
+      <div class="head">
+        <h2>Contact</h2>
+        <p>Have a project, an opportunity, or want to talk tech? Let's connect.</p>
+      </div>
+      <div class="contact">
+        <div>
+          <h3>Let's talk</h3>
+          <p>Whether it's an internship, a small project, or just a chat about code and security, I'd like to hear from you.</p>
+          <div class="btns">
+            <a class="btn wa" data-key="whatsapp" target="_blank" rel="noopener" hidden>Message me on WhatsApp</a>
+            <a class="btn primary" data-key="resume" target="_blank" rel="noopener" hidden>Download resume</a>
+          </div>
+        </div>
+        <div class="list">
+          <a class="row" data-key="email" hidden><small>Email</small><span class="val"></span></a>
+          <a class="row" data-key="phone" hidden><small>Phone</small><span class="val"></span></a>
+          <div class="row" data-key="location" hidden><small>Location</small><span class="val"></span></div>
+          <div class="row" data-key="college" hidden><small>College</small><span class="val"></span></div>
+          <a class="row" data-key="linkedin" target="_blank" rel="noopener" hidden><small>LinkedIn</small><span class="val"></span></a>
+          <a class="row" data-key="github" target="_blank" rel="noopener" hidden><small>GitHub</small><span class="val"></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="year"></span> Tejas Gangurde. Made in Malegaon, India.</footer>
+
+<script>
+  /* ============ EDIT ONLY THIS BLOCK ============
+     Leave a value as "" and that item stays hidden on the page. */
+  const ME = {
+    email: "",          // e.g. "yourname@gmail.com"
+    phone: "",          // e.g. "+91 98765 43210"  (only add it if you want it public)
+    whatsapp: "",       // digits with country code, e.g. "919876543210"
+    location: "Malegaon, Maharashtra, India",
+    college: "K.K. Wagh",
+    course: "BSc Computer Science, 2nd Year",
+    linkedin: "",       // e.g. "https://linkedin.com/in/yourname"
+    github: "",         // e.g. "https://github.com/yourname"
+    resume: "",         // e.g. "resume.pdf" (put the file next to index.html)
+    roadLive: "",   roadCode: "",
+    phishLive: "",  phishCode: "",
+    forensicsLive: "", forensicsCode: ""
+  };
+
+  const PHRASES = [
+    "I'm learning Full Stack Development.",
+    "I'm learning Data Analysis.",
+    "I'm exploring Cybersecurity."
+  ];
+
+  /* Tools per tab (up to 5 each). Delete any tool you don't actually use. */
+  const TOOLS = {
+    "Offensive":    ["Metasploit", "Nmap", "Hydra", "John the Ripper", "SQLmap"],
+    "Defensive":    ["Wireshark", "Snort", "Fail2Ban", "ClamAV", "Autopsy"],
+    "Web Security": ["Burp Suite", "OWASP ZAP", "Nikto", "Gobuster", "SQLmap"],
+    "Networking":   ["Wireshark", "Nmap", "Netcat", "Packet Tracer", "tcpdump"],
+    "Languages":    ["Python", "JavaScript", "Java", "C", "C++"],
+    "Data Analyst": ["Excel", "SQL", "Pandas", "Power BI", "Jupyter"]
+  };
+
+  const PLATFORMS = [
+    ["🐉", "Kali Linux"], ["🟠", "Ubuntu"], ["🪟", "Windows"],
+    ["🚩", "TryHackMe"], ["📦", "Hack The Box"], ["☁️", "Azure"]
+  ];
+  /* ============================================== */
+
+  const hrefFor = (k, v) =>
+    k === 'email' ? 'mailto:' + v :
+    k === 'phone' ? 'tel:' + v.replace(/\s/g, '') :
+    k === 'whatsapp' ? 'https://wa.me/' + v.replace(/\D/g, '') : v;
+
+  // links, icons and rows that use data-key
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const k = el.dataset.key, v = ME[k];
+    if (!v) { el.hidden = true; return; }
+    el.hidden = false;
+    if (el.tagName === 'A') el.href = hrefFor(k, v);
+    const val = el.querySelector('.val');
+    if (val) val.textContent = v.replace(/^https?:\/\/(www\.)?/, '');
+  });
+  // fact rows in the About card
+  document.querySelectorAll('[data-row]').forEach(el => {
+    const v = ME[el.dataset.row];
+    if (!v) { el.hidden = true; return; }
+    el.querySelector('.val').textContent = v;
+  });
+
+  // tools tabs
+  const tabs = document.getElementById('tabs');
+  const tiles = document.getElementById('toolTiles');
+  const initials = s => s.split(/[\s-]+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+  function showTab(name) {
+    tabs.querySelectorAll('.tab').forEach(t => t.setAttribute('aria-selected', t.dataset.name === name));
+    tiles.innerHTML = TOOLS[name].map(t =>
+      `<div class="tile"><div class="mono">${initials(t)}</div>${t}</div>`).join('');
+  }
+  Object.keys(TOOLS).forEach((name, i) => {
+    const b = document.createElement('button');
+    b.className = 'tab'; b.type = 'button'; b.setAttribute('role', 'tab'); b.dataset.name = name; b.textContent = name;
+    b.addEventListener('click', () => showTab(name));
+    tabs.appendChild(b);
+    if (i === 0) showTab(name);
+  });
+
+  // platforms
+  document.querySelector('.tiles.plat').innerHTML = PLATFORMS.map(([icon, name]) =>
+    `<div class="tile"><div class="mono">${icon}</div>${name}</div>`).join('');
+
+  // mobile menu
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  btn.addEventListener('click', () => {
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // typing effect
+  const typed = document.getElementById('typed');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    typed.textContent = PHRASES[0];
+  } else {
+    let p = 0, i = 0, deleting = false;
+    (function tick() {
+      const word = PHRASES[p];
+      typed.textContent = word.slice(0, i);
+      if (!deleting && i === word.length) { deleting = true; return setTimeout(tick, 1800); }
+      if (deleting && i === 0) { deleting = false; p = (p + 1) % PHRASES.length; }
+      i += deleting ? -1 : 1;
+      setTimeout(tick, deleting ? 35 : 75);
+    })();
+  }
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
